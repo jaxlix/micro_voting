@@ -1,0 +1,23 @@
+{
+  "id": "1466952",
+  "name": "微投票",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "5928267",
+      "name": "首页-选中",
+      "font_class": "yemian",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "7644458",
+      "name": "我 的",
+      "font_class": "icon-me",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    }
+  ]
+}
