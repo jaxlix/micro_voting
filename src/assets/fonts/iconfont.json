@@ -13,6 +13,13 @@
       "unicode_decimal": 58880
     },
     {
+      "icon_id": "6966062",
+      "name": "勾选 选中态",
+      "font_class": "gouxuanxuanzhongtai",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
       "icon_id": "7644458",
       "name": "我 的",
       "font_class": "icon-me",

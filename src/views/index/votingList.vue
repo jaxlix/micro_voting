@@ -3,8 +3,9 @@
         <div class="bg">
             微投票
         </div>
+        <div @click="popupVisible=true">全部</div>
         <div class="list">
-            <div class="item" v-for=" (d, i) in dataList" :key="i">
+            <div class="item" v-for=" (d, i) in dataList" :key="i" @click="toDetail">
                 <div class="type" :class="typeClass[d.type]">{{type[d.type]}}</div>
                 <div class="content">
                     <div class="title">{{d.title}}</div>
@@ -15,6 +16,13 @@
                 </div>
             </div>
         </div>
+
+        <mt-popup v-model="popupVisible" position="bottom" class="popup">
+            <div class="item" v-for="(d, i) in selectData" :key="i" @click="check(d.value)">
+                <span class="name">{{d.name}}</span>
+                <span class="iconfont" :class="checked==d.value ? 'icongouxuanxuanzhongtai' : ''"></span>
+            </div>
+        </mt-popup>
     </div>
 </template>
 <script>
@@ -31,6 +39,16 @@ export default {
                 '2': 'yellow',
                 '3': 'red'
             },
+            selectData: [
+                {'value': 1, 'name': '全部'},
+                {'value': 2, 'name': '公示投票(已投)'},
+                {'value': 3, 'name': '公示投票(未投)'},
+                {'value': 4, 'name': '问卷调查(已答)'},
+                {'value': 5, 'name': '问卷调查(未答)'},
+                {'value': 6, 'name': '考试测评(已考)'},
+                {'value': 7, 'name': '考试测评(未考)'}
+            ],
+            checked: '1',
             dataList: [
                 {
                     'type': '1',    // 1:公示投票  2：问卷调查  3：考试测评
@@ -60,12 +78,19 @@ export default {
                     'piaoshu': 88,
                     'endTime': '2019-12-21 12:00'
                 }
-            ]
+            ],
+            popupVisible: false
         }
     },
     methods: {
         toSearch(){
             this.$router.history.push('/search')
+        },
+        toDetail(){
+            this.$router.push({path: '/votingDetail'})
+        },
+        check(v){
+            this.checked = v
         }
     }
 }
@@ -93,12 +118,13 @@ export default {
                 background-color: #fff;
                 .type{
                     width: 26px;
+                    padding-top: 10px;
                     text-align: center;
                     color: #fff;
                 }
                 .content{
                     flex: 1;
-                    margin-left: 10px;
+                    padding: 10px;
                     .title{
                         font-size: 18px;
                         margin-bottom: 10px;
@@ -122,6 +148,25 @@ export default {
                 }
             }
         }
+        .popup{
+            width: 100%;
+            background-color: #fff;
+            .item{
+                display: flex;
+                padding: 15px;
+                height: 20px;
+                border-bottom: 1px solid #f5f5f5;
+                .name{
+                    flex: 1;
+                }
+                .iconfont{
+                    width: 40px;
+                    font-size: 22px;
+                    color: #409EFF;
+                }
+            }
+        }
+        
     }
 </style>
 
