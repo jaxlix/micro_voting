@@ -28,6 +28,16 @@ export default new Router({
       component: () => import('../views/voting/detail')
     },
     {
+      path: '/questionnaireDetail',
+      name: 'questionnaireDetail',
+      component: () => import('../views/questionnaire/detail')
+    },
+    {
+      path: '/testDetail',
+      name: 'testDetail',
+      component: () => import('../views/test/detail')
+    },
+    {
       path: '/mine',
       name: 'mine',
       component: () => import('../views/mine/index')

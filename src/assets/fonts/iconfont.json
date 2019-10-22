@@ -25,6 +25,13 @@
       "font_class": "icon-me",
       "unicode": "e601",
       "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "9880099",
+      "name": "向下",
+      "font_class": "down2",
+      "unicode": "e6aa",
+      "unicode_decimal": 59050
     }
   ]
 }

@@ -1,8 +1,8 @@
 <template>
-    <div class="detail">
-        <mt-header fixed title="投票详情">
+    <div class="tp-detail">
+        <mt-header fixed title="公示投票">
             <router-link to="/" slot="left">
-                <mt-button icon="back">back</mt-button>
+                <mt-button icon="back"></mt-button>
             </router-link>
         </mt-header>
         <div class="content">
@@ -47,7 +47,7 @@ export default {
 </script>
 
 <style lang="less" scope>
-    .detail{
+    .tp-detail{
         .content{
             padding-top: 40px;
             .title{

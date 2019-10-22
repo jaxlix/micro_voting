@@ -3,9 +3,12 @@
         <div class="bg">
             微投票
         </div>
-        <div @click="popupVisible=true">全部</div>
+        <div class="select" @click="popupVisible=true">
+            <span>{{checkedName}}</span>
+            <span class="iconfont icondown2"></span>
+        </div>
         <div class="list">
-            <div class="item" v-for=" (d, i) in dataList" :key="i" @click="toDetail">
+            <div class="item" v-for=" (d, i) in dataList" :key="i" @click="toDetail(d.type)">
                 <div class="type" :class="typeClass[d.type]">{{type[d.type]}}</div>
                 <div class="content">
                     <div class="title">{{d.title}}</div>
@@ -18,7 +21,7 @@
         </div>
 
         <mt-popup v-model="popupVisible" position="bottom" class="popup">
-            <div class="item" v-for="(d, i) in selectData" :key="i" @click="check(d.value)">
+            <div class="item" v-for="(d, i) in selectData" :key="i" @click="check(d)">
                 <span class="name">{{d.name}}</span>
                 <span class="iconfont" :class="checked==d.value ? 'icongouxuanxuanzhongtai' : ''"></span>
             </div>
@@ -49,6 +52,7 @@ export default {
                 {'value': 7, 'name': '考试测评(未考)'}
             ],
             checked: '1',
+            checkedName: '全部',
             dataList: [
                 {
                     'type': '1',    // 1:公示投票  2：问卷调查  3：考试测评
@@ -86,11 +90,20 @@ export default {
         toSearch(){
             this.$router.history.push('/search')
         },
-        toDetail(){
-            this.$router.push({path: '/votingDetail'})
+        toDetail(type){
+            // 1:公示投票  2：问卷调查  3：考试测评
+            if(type == '1'){
+                this.$router.push({path: '/votingDetail'})
+            }else if(type == '2'){
+                this.$router.push({path: '/questionnaireDetail'})
+            }else if(type == '3'){
+                this.$router.push({path: '/testDetail'})
+            }
         },
         check(v){
-            this.checked = v
+            this.checked = v.value
+            this.checkedName = v.name
+            this.popupVisible = false
         }
     }
 }
@@ -109,6 +122,18 @@ export default {
             font-size: 2rem;
             font-weight: bold;
             background-color: #498BFF;
+        }
+        .select{
+            display: flex;
+            justify-content: space-between;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 18px;
+            background-color: #fff;
+            span{
+                padding-left: 20px;
+                padding-right: 20px;
+            }
         }
         .list{
             .item{
