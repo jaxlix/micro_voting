@@ -13,7 +13,8 @@
                 <div class="content">
                     <div class="title">{{d.title}}</div>
                     <div class="num">
-                        {{d.canyu}}人参与，已投{{d.piaoshu}}票
+                        <span v-if="d.type == '1'">{{d.canyu}}人参与，已投{{d.piaoshu}}票</span>
+                        <span v-if="d.type != '1'">{{d.status}}</span>
                     </div>
                     <div class="end">{{d.endTime}} 结束</div>
                 </div>
@@ -44,12 +45,15 @@ export default {
             },
             selectData: [
                 {'value': 1, 'name': '全部'},
-                {'value': 2, 'name': '公示投票(已投)'},
-                {'value': 3, 'name': '公示投票(未投)'},
-                {'value': 4, 'name': '问卷调查(已答)'},
-                {'value': 5, 'name': '问卷调查(未答)'},
-                {'value': 6, 'name': '考试测评(已考)'},
-                {'value': 7, 'name': '考试测评(未考)'}
+                {'value': 2, 'name': '公示投票(全部)'},
+                {'value': 3, 'name': '公示投票(已投)'},
+                {'value': 4, 'name': '公示投票(未投)'},
+                {'value': 5, 'name': '问卷调查(全部)'},
+                {'value': 6, 'name': '问卷调查(已答)'},
+                {'value': 7, 'name': '问卷调查(未答)'},
+                {'value': 8, 'name': '考试测评(全部)'},
+                {'value': 9, 'name': '考试测评(已考)'},
+                {'value': 10, 'name': '考试测评(未考)'}
             ],
             checked: '1',
             checkedName: '全部',
@@ -71,15 +75,25 @@ export default {
                 {
                     'type': '2',
                     'title': '问卷调查',
-                    'canyu': 23,
-                    'piaoshu': 88,
+                    'status': '已投',
+                    'endTime': '2019-12-21 12:00'
+                },
+                {
+                    'type': '2',
+                    'title': '问卷调查2',
+                    'status': '未投',
                     'endTime': '2019-12-21 12:00'
                 },
                 {
                     'type': '3',
                     'title': '测试',
-                    'canyu': 23,
-                    'piaoshu': 88,
+                    'status': '已答',
+                    'endTime': '2019-12-21 12:00'
+                },
+                {
+                    'type': '3',
+                    'title': '测试2',
+                    'status': '未答',
                     'endTime': '2019-12-21 12:00'
                 }
             ],
